@@ -96,7 +96,7 @@ body {
 .book-now-btn {
     background: white;
     color: #333 !important;
-    padding: 12px 24px;
+    padding: 14px 28px;
     border-radius: 50px;
     font-weight: 600;
     text-decoration: none;
@@ -106,6 +106,9 @@ body {
     align-items: center;
     gap: 8px;
     border: 2px solid transparent;
+    font-size: 1rem;
+    white-space: nowrap;
+    min-height: 48px;
 }
 
 .book-now-btn:hover {
@@ -1299,19 +1302,23 @@ body {
      }
      
      .header-content {
-         flex-direction: column;
-         gap: 8px;
+         flex-direction: row;
+         gap: 12px;
          align-items: center;
+         justify-content: space-between;
      }
     
     .logo-img {
-        height: 40px;
+        height: 45px;
+        max-width: 150px;
     }
     
     .book-now-btn {
-        padding: 8px 16px;
-        font-size: 12px;
+        padding: 10px 18px;
+        font-size: 13px;
         white-space: nowrap;
+        min-height: 40px;
+        flex-shrink: 0;
     }
     
          /* Hero Mobile */
@@ -1676,16 +1683,17 @@ body {
 
 /* Tablet Responsive */
 @media (min-width: 481px) and (max-width: 768px) {
-    .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
+         .header {
+         position: fixed;
+         top: 0;
+         left: 0;
+         right: 0;
+         z-index: 1000;
+         background: rgba(255, 255, 255, 0.95);
+         backdrop-filter: blur(10px);
+         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+         padding: 12px 0;
+     }
     
     body {
         padding-top: 80px;
