@@ -148,18 +148,84 @@ document.querySelector('form').addEventListener('submit', function(e) {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Add name attributes to form inputs for proper form submission
-    const formInputs = document.querySelectorAll('.form-input');
-    const fieldNames = ['fullName', 'phone', 'email', 'postalCode', 'carBrand', 'service', 'callbackTime'];
-    
-    formInputs.forEach((input, index) => {
-        if (index < fieldNames.length) {
-            input.name = fieldNames[index];
-        }
-    });
-    
     // Initialize carousel after a short delay to ensure images are loaded
     setTimeout(() => {
         initializeCarousel();
     }, 500);
-}); 
+    
+    // Form submission handler
+    const bookingForm = document.getElementById('bookingForm');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', handleFormSubmission);
+    }
+});
+
+// Handle form submission and send to webhook
+async function handleFormSubmission(e) {
+    e.preventDefault();
+    
+    const form = e.target;
+    const submitBtn = form.querySelector('.green-submit');
+    const originalText = submitBtn.textContent;
+    
+    // Disable submit button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    
+    try {
+        // Collect form data
+        const formData = new FormData(form);
+        const data = {};
+        
+        // Convert FormData to regular object
+        for (let [key, value] of formData.entries()) {
+            data[key] = value;
+        }
+        
+        // Add timestamp
+        data.timestamp = new Date().toISOString();
+        data.source = 'True Wash Landing Page';
+        
+        // Send to webhook
+        const response = await fetch('https://services.leadconnectorhq.com/hooks/E5NSmqlosXV3qKjMNr3A/webhook-trigger/8185bdf3-da60-41e1-8ba0-fb009dc92f83', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+            // Success - show success message
+            submitBtn.textContent = 'Success! We\'ll call you soon!';
+            submitBtn.style.backgroundColor = '#28a745';
+            
+            // Reset form
+            form.reset();
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+                submitBtn.style.backgroundColor = '';
+            }, 3000);
+            
+        } else {
+            throw new Error('Network response was not ok');
+        }
+        
+    } catch (error) {
+        console.error('Error submitting form:', error);
+        
+        // Show error message
+        submitBtn.textContent = 'Error - Please try again';
+        submitBtn.style.backgroundColor = '#dc3545';
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            submitBtn.style.backgroundColor = '';
+        }, 3000);
+    }
+}
