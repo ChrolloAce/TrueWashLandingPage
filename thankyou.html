@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - True Wash</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="theme.css">
+    <style>
+        .thank-you-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 20px;
+        }
+
+        .thank-you-content {
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .thank-you-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .thank-you-subtitle {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .thank-you-message {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .carousel-container {
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--primary-green);
+            transform: scale(1.2);
+        }
+
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-green);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(165, 199, 34, 0.3);
+        }
+
+        .back-to-home:hover {
+            background: var(--dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(165, 199, 34, 0.4);
+        }
+
+        .contact-info {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .phone-number {
+            color: var(--primary-green);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .thank-you-title {
+                font-size: 2rem;
+            }
+
+            .thank-you-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .thank-you-message {
+                font-size: 1rem;
+            }
+
+            .carousel-wrapper {
+                height: 300px;
+            }
+
+            .contact-info {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="thank-you-content">
+            <h1 class="thank-you-title">Thank You!</h1>
+            <p class="thank-you-subtitle">Your booking request has been submitted successfully</p>
+            <p class="thank-you-message">
+                We appreciate your business and will contact you soon to confirm your car detailing appointment. 
+                Get ready for your vehicle to look absolutely amazing!
+            </p>
+
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <div class="carousel-slide active">
+                        <img src="carouselimages/6797ad1938cbe748d54e3531.png" alt="Car detailing service">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carouselimages/tmp6ifm2vow.webp" alt="Professional car cleaning">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carouselimages/tmp_2raxjew.webp" alt="Interior car detailing">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carouselimages/tmpbi6qc2_d.webp" alt="Exterior car wash">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carouselimages/tmpbtehcnu3.webp" alt="Car cleaning service">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carouselimages/tmph1s6h4wv.webp" alt="Mobile car detailing">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carouselimages/tmpk61x_nhc.webp" alt="Professional cleaning">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="carouselimages/tmprb8cx5g7.webp" alt="Car wash service">
+                    </div>
+                </div>
+                <div class="carousel-indicators">
+                    <div class="carousel-dot active" onclick="goToSlide(0)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(1)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(2)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(3)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(4)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(5)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(6)"></div>
+                    <div class="carousel-dot" onclick="goToSlide(7)"></div>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h3>We'll be in touch soon!</h3>
+                <p>Call us directly if you have any questions:</p>
+                <p class="phone-number">📞 (561) 428-5826</p>
+                <p>Serving Miami-Dade & Broward County</p>
+            </div>
+
+            <a href="index.html" class="back-to-home">
+                <i class="fas fa-home"></i>
+                Back to Home
+            </a>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            // Show current slide
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            showSlide(currentSlide);
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Auto-advance slides every 4 seconds
+        setInterval(nextSlide, 4000);
+
+        // Initialize first slide
+        showSlide(0);
+    </script>
+</body>
+</html> 

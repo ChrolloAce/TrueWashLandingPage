@@ -196,19 +196,17 @@ async function handleFormSubmission(e) {
         });
         
         if (response.ok) {
-            // Success - show success message
-            submitBtn.textContent = 'Success! We\'ll call you soon!';
+            // Success - show success message briefly then redirect
+            submitBtn.textContent = 'Success! Redirecting...';
             submitBtn.style.backgroundColor = '#28a745';
             
             // Reset form
             form.reset();
             
-            // Reset button after 3 seconds
+            // Redirect to thank you page after 1.5 seconds
             setTimeout(() => {
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-                submitBtn.style.backgroundColor = '';
-            }, 3000);
+                window.location.href = 'thankyou.html';
+            }, 1500);
             
         } else {
             throw new Error('Network response was not ok');
