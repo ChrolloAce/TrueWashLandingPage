@@ -128,23 +128,7 @@ document.querySelectorAll('.feature-card, .price-card').forEach(el => {
     observer.observe(el);
 });
 
-// Form submission (for future enhancement)
-document.querySelector('form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(this);
-    const data = {};
-    for (let [key, value] of formData.entries()) {
-        data[key] = value;
-    }
-    
-    // In a real application, you would send this data to a server
-    console.log('Form submitted:', data);
-    
-    // Show success message (for demo purposes)
-    alert('Thank you for your booking request! We will contact you shortly.');
-});
+// Form submission handled by webhook integration below
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
