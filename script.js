@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Handle form submission and send to webhook
+// Handle form submission and send to both webhook and email
 async function handleFormSubmission(e) {
     e.preventDefault();
     
@@ -166,12 +166,45 @@ async function handleFormSubmission(e) {
             data[key] = value;
         }
         
-        // Add timestamp
+        // Add timestamp and source
         data.timestamp = new Date().toISOString();
         data.source = 'True Wash Landing Page';
         
-        // Send to webhook
-        const response = await fetch('https://services.leadconnectorhq.com/hooks/E5NSmqlosXV3qKjMNr3A/webhook-trigger/8185bdf3-da60-41e1-8ba0-fb009dc92f83', {
+        // Create FormData for Web3Forms
+        const web3FormsData = new FormData();
+        web3FormsData.append('access_key', '9cf6577c-47ec-40f7-b1ad-07fe3b1834db');
+        web3FormsData.append('subject', 'New Car Detailing Booking Request - True Wash');
+        web3FormsData.append('from_name', 'True Wash Website');
+        web3FormsData.append('name', data.fullName);
+        web3FormsData.append('email', data.email);
+        web3FormsData.append('phone', data.phone);
+        web3FormsData.append('postal_code', data.postalCode);
+        web3FormsData.append('car_brand', data.carBrand);
+        web3FormsData.append('service', data.service);
+        web3FormsData.append('callback_time', data.callbackTime);
+        web3FormsData.append('timestamp', data.timestamp);
+        web3FormsData.append('redirect', 'false');
+        
+        // Custom message format
+        const message = `
+New Car Detailing Booking Request
+
+Customer Information:
+- Name: ${data.fullName}
+- Email: ${data.email}
+- Phone: ${data.phone}
+- Postal Code: ${data.postalCode}
+- Car Brand: ${data.carBrand}
+- Service Requested: ${data.service}
+- Preferred Callback Time: ${data.callbackTime}
+- Submitted: ${data.timestamp}
+
+Source: True Wash Landing Page
+        `;
+        web3FormsData.append('message', message);
+        
+        // Send to webhook (existing GoHighLevel)
+        const webhookPromise = fetch('https://services.leadconnectorhq.com/hooks/E5NSmqlosXV3qKjMNr3A/webhook-trigger/8185bdf3-da60-41e1-8ba0-fb009dc92f83', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -179,7 +212,16 @@ async function handleFormSubmission(e) {
             body: JSON.stringify(data)
         });
         
-        if (response.ok) {
+        // Send to Web3Forms (sends to info@truewash.us)
+        const web3FormsPromise = fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: web3FormsData
+        });
+        
+        // Wait for both to complete
+        const [webhookResponse, web3FormsResponse] = await Promise.all([webhookPromise, web3FormsPromise]);
+        
+        if (webhookResponse.ok && web3FormsResponse.ok) {
             // Success - show success message briefly then redirect
             submitBtn.textContent = 'Success! Redirecting...';
             submitBtn.style.backgroundColor = '#28a745';
