@@ -172,7 +172,7 @@ async function handleFormSubmission(e) {
         
         // Create FormData for Web3Forms
         const web3FormsData = new FormData();
-        web3FormsData.append('access_key', '9cf6577c-47ec-40f7-b1ad-07fe3b1834db');
+        web3FormsData.append('access_key', '89070342-6260-4ba2-9843-69ad84686afd');
         web3FormsData.append('subject', 'New Car Detailing Booking Request - True Wash');
         web3FormsData.append('from_name', 'True Wash Website');
         web3FormsData.append('name', data.fullName);
@@ -184,6 +184,7 @@ async function handleFormSubmission(e) {
         web3FormsData.append('callback_time', data.callbackTime);
         web3FormsData.append('timestamp', data.timestamp);
         web3FormsData.append('redirect', 'false');
+
         
         // Custom message format
         const message = `
