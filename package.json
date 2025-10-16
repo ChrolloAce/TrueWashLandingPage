@@ -1,0 +1,16 @@
+{
+  "name": "truewash-landing-page",
+  "version": "1.0.0",
+  "description": "True Wash Car Detailing Landing Page",
+  "main": "index.html",
+  "scripts": {
+    "start": "live-server --port=3000 --open=/index.html",
+    "dev": "live-server --port=3000 --open=/index.html --watch=."
+  },
+  "keywords": ["car", "wash", "detailing", "landing-page"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+} 
