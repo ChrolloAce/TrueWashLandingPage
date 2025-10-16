@@ -300,9 +300,9 @@ body {
     border: 1px solid #333;
     position: sticky;
     top: 100px;
-    overflow: hidden;
+    overflow: visible;
     height: fit-content;
-    max-height: calc(100vh - 120px);
+    max-height: none;
     display: flex;
     flex-direction: column;
 }
@@ -399,23 +399,24 @@ body {
     background: var(--primary-green) !important;
     color: white !important;
     width: 100%;
-    padding: 18px 20px;
+    padding: 20px 20px;
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 48px;
+    margin-top: 24px;
     position: relative;
     z-index: 2;
     text-transform: none;
+    box-shadow: 0 4px 15px rgba(165, 199, 34, 0.4);
 }
 
 .green-submit:hover {
     background: var(--dark-green) !important;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(165, 199, 34, 0.3);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(165, 199, 34, 0.5);
 }
 
 .green-submit:active {
@@ -1424,8 +1425,11 @@ body {
     }
     
     .green-submit {
-        padding: 14px 20px;
-        font-size: 0.9rem;
+        padding: 16px 20px;
+        font-size: 1rem;
+        font-weight: 700;
+        margin-top: 20px;
+        box-shadow: 0 4px 15px rgba(165, 199, 34, 0.4);
     }
     
     .services-card {
